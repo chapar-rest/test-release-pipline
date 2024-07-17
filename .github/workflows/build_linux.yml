@@ -31,7 +31,7 @@ jobs:
 
     - name: Upload Release Asset
       run: |
-        gh release upload ${{github.event.release.tag_name}} ./dist/Chapar_linux_amd64.tar.xz
+        gh release upload ${{github.event.release.tag_name}} ./dist/chapar-linux-${{ github.ref_name }}-amd64.tar.xz
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       shell: bash
