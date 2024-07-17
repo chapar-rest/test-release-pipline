@@ -56,8 +56,8 @@ build_windows:
 	gogio -target=windows -arch=amd64 -o dist\amd64\Chapar.exe .
 	gogio -target=windows -arch=386 -o dist\i386\Chapar.exe .
 	rm *.syso
-	powershell -Command "Compress-Archive -Path dist\amd64\Chapar.exe -Destination dist\Chapar_windows_amd64.zip"
-	powershell -Command "Compress-Archive -Path dist\i386\Chapar.exe -Destination dist\Chapar_windows_i386.zip"
+	powershell -Command "Compress-Archive -Path dist\amd64\Chapar.exe -Destination dist\chapar-windows-$(TAG_NAME)-amd64.zip"
+	powershell -Command "Compress-Archive -Path dist\i386\Chapar.exe -Destination dist\chapar-windows-$(TAG_NAME)-i386.zip"
 	rm -rf .\dist\amd64
 	rm -rf .\dist\i386
 
@@ -69,7 +69,7 @@ build_linux:
 	cp ./build/appicon.png ./dist/amd64
 	cp ./LICENSE ./dist/amd64
 	cp -r ./build/desktop-assets ./dist/amd64
-	tar -cJf ./dist/Chapar_linux_amd64.tar.xz --directory=./dist/amd64 chapar desktop-assets install-linux.sh appicon.png ./LICENSE
+	tar -cJf ./dist/chapar-linux-$(TAG_NAME)-amd64.tar.xz --directory=./dist/amd64 chapar desktop-assets install-linux.sh appicon.png ./LICENSE
 	rm -rf ./dist/amd64
 
 .PHONY: run
