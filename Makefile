@@ -20,8 +20,8 @@ build_macos: build_macos_app
 .PHONY: build_macos_dmg
 build_macos_dmg: build_macos_app
 	@echo "Building Macos DMG..."
-	rm -rf ./dist/chapar-$(TAG_NAME)-amd64.dmg
-	rm -rf ./dist/chapar-$(TAG_NAME)-arm64.dmg
+	rm -rf ./dist/chapar-macos-$(TAG_NAME)-amd64.dmg
+	rm -rf ./dist/chapar-macos-$(TAG_NAME)-arm64.dmg
 	create-dmg \
 	  --volname "Chapar Installer" \
 	  --volicon "./build/appicon.icns" \
@@ -32,7 +32,7 @@ build_macos_dmg: build_macos_app
 	  --icon "Chapar.app" 125 150 \
 	  --hide-extension "Chapar.app" \
 	  --app-drop-link 375 150 \
-	  "./dist/chapar-$(TAG_NAME)-arm64.dmg" \
+	  "./dist/chapar-macos-$(TAG_NAME)-arm64.dmg" \
 	  "./dist/arm64/Chapar.app"
 
 	create-dmg \
@@ -45,7 +45,7 @@ build_macos_dmg: build_macos_app
 	  --icon "Chapar.app" 125 150 \
 	  --hide-extension "Chapar.app" \
 	  --app-drop-link 375 150 \
-	  "./dist/chapar-$(TAG_NAME)-amd64.dmg" \
+	  "./dist/chapar-macos-$(TAG_NAME)-amd64.dmg" \
 	  "./dist/amd64/Chapar.app"
 
 

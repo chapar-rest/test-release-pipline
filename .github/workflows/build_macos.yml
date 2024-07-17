@@ -31,8 +31,8 @@ jobs:
 
     - name: Upload Release Asset
       run: |
-        gh release upload ${{github.event.release.tag_name}} ./dist/chapar-${{ github.ref_name }}-amd64.dmg
-        gh release upload ${{github.event.release.tag_name}} ./dist/chapar-${{ github.ref_name }}-arm64.dmg
+        gh release upload ${{github.event.release.tag_name}} ./dist/chapar-macos-${{ github.ref_name }}-amd64.dmg
+        gh release upload ${{github.event.release.tag_name}} ./dist/chapar-macos-${{ github.ref_name }}-arm64.dmg
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       shell: bash
