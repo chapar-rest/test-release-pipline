@@ -57,6 +57,9 @@ build_windows:
 	gogio -ldflags="-X main.serviceVersion=${TAG_NAME}" -target=windows -arch=386 -o dist\i386\Chapar.exe .
 	gogio -ldflags="-X main.serviceVersion=${TAG_NAME}" -target=windows -arch=arm64 -o dist\arm64\Chapar.exe .
 	rm *.syso
+	ls
+	ls dist
+	ls -l dist\amd64
 	powershell -Command "Compress-Archive -Path dist\amd64\Chapar.exe -Destination dist\chapar-windows-${TAG_NAME}-amd64.zip"
 	powershell -Command "Compress-Archive -Path dist\i386\Chapar.exe -Destination dist\chapar-windows-${TAG_NAME}-i386.zip"
 	powershell -Command "Compress-Archive -Path dist\arm64\Chapar.exe -Destination dist\chapar-windows-${TAG_NAME}-arm64.zip"
