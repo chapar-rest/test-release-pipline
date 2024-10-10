@@ -1,38 +1,38 @@
-name: Build MacOS
+# name: Build MacOS
 
-on:
-  release:
-    types: [published]
+# on:
+#   release:
+#     types: [published]
 
-permissions:
-  contents: write
+# permissions:
+#   contents: write
 
-jobs:
-  build:
-    runs-on: macos-latest
+# jobs:
+#   build:
+#     runs-on: macos-latest
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v4
 
-      - name: Setup Go
-        uses: actions/setup-go@v4
-        with:
-          go-version: 1.22.1
+#       - name: Setup Go
+#         uses: actions/setup-go@v4
+#         with:
+#           go-version: 1.22.1
 
-      - name: Install gogio tool
-        run: go install gioui.org/cmd/gogio@latest
+#       - name: Install gogio tool
+#         run: go install gioui.org/cmd/gogio@latest
 
-      - name: Install create-dmg tool
-        run: brew install create-dmg
+#       - name: Install create-dmg tool
+#         run: brew install create-dmg
 
-      - name: Build macos disk images
-        run: make build_macos_dmg
+#       - name: Build macos disk images
+#         run: make build_macos_dmg
 
-      - name: Upload Release Asset
-        run: |
-          gh release upload ${{github.event.release.tag_name}} ./dist/chapar-macos-${{ github.ref_name }}-amd64.dmg
-          gh release upload ${{github.event.release.tag_name}} ./dist/chapar-macos-${{ github.ref_name }}-arm64.dmg
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        shell: bash
+#       - name: Upload Release Asset
+#         run: |
+#           gh release upload ${{github.event.release.tag_name}} ./dist/chapar-macos-${{ github.ref_name }}-amd64.dmg
+#           gh release upload ${{github.event.release.tag_name}} ./dist/chapar-macos-${{ github.ref_name }}-arm64.dmg
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         shell: bash
